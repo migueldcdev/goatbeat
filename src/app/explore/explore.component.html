@@ -1,1 +1,7 @@
-<p>explore works!</p>
+<div class="container w-full mx-auto">
+    <div class="container w-2/5 border border-2 rounded border-gum mx-auto p-10" *ngFor="let artist of artists">
+        <p class="text-silver text-xl my-3">{{artist.name}}</p>
+        <p class="text-silver">{{artist.address}}</p>
+        <p class="text-silver">{{artist.description}}</p>
+    </div>
+</div>

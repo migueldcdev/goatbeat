@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import axios from 'axios'
+
+interface Artist  {
+  id: number,
+  address: string,
+  name: string,
+  description: string
+}
 
 @Component({
   selector: 'app-explore',
@@ -7,9 +15,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExploreComponent implements OnInit {
 
+  artists!: Artist[]
+
   constructor() { }
 
   ngOnInit(): void {
+    axios.get('http://localhost:3000/artists').then(response => {
+    this.artists = response.data   
+    console.log(response.data)   
+    
+    }) 
   }
-
 }
