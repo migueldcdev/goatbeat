@@ -21,8 +21,7 @@ export class ExploreComponent implements OnInit {
 
   ngOnInit(): void {
     axios.get('http://localhost:3000/artists').then(response => {
-    this.artists = response.data   
-    console.log(response.data)   
+    this.artists = response.data      
     
     }) 
   }

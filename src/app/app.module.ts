@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +11,7 @@ import { MainComponent } from './main/main.component';
 import { ExploreComponent } from './explore/explore.component';
 import { CreatorsComponent } from './creators/creators.component';
 import { DocsComponent } from './docs/docs.component';
+import { CreatorPanelComponent } from './creator-panel/creator-panel.component';
 
 @NgModule({
   declarations: [
@@ -20,10 +22,12 @@ import { DocsComponent } from './docs/docs.component';
     ExploreComponent,    
     CreatorsComponent,
     DocsComponent,
+    CreatorPanelComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,    
+    AppRoutingModule, 
+    ReactiveFormsModule   
   ],
   providers: [],
   bootstrap: [AppComponent]

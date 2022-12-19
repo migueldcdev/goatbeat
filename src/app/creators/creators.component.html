@@ -1,22 +1,37 @@
-<div class="container w-full mx-auto">
+<div *ngIf="!isAddressRegistered && !isAddressProvided" class="container w-full mx-auto">
     <div class="container mt-40">
         <p class="text-silver text-8xl p-4 text-center">
             HERE STARTS YOUR JOURNEY AS A MUSIC NFT CREATOR
         </p>
     </div>
-    <div class="container flex flex-col md:flex-row w-5/5 md:w-3/5 p-10 mx-auto">
+    <div class="container p-10 mx-auto">        
         <div class="p-10 flex items-center flex-col">
-            <p class="text-silver text-center my-2">Sing up if you are not already registered as an creator.</p>
-            <button class="bg-gum hover:bg-silver text-silver hover:text-gum border border-gum font-bold py-4 px-6 rounded mt-5">
-                Sign up
+            <p class="text-silver text-center my-2">Log in or create a new artist account by connecting your wallet.</p>
+            <button (click)="connectWallet()" class="text-sea hover:text-silver hover:bg-sea font-bold py-4 px-6 border border-sea rounded mx-auto mt-5">
+                Connect with wallet
             </button>
-        </div>
-        <div class="p-10 flex items-center flex-col">
-            <p class="text-silver text-center my-2">Log in if you already have a creator account.</p>
-            <button class="text-sea hover:text-silver hover:bg-sea font-bold py-4 px-6 border border-sea rounded mx-auto mt-5">
-                Log in
-            </button>
-        </div>
-        
+        </div>             
     </div>
+</div>
+
+<app-creator-panel *ngIf="isAddressRegistered" [address]="address"></app-creator-panel>
+
+<div *ngIf="isAddressProvided" class="p-10">
+    <div class="container my-20 mx-auto">
+        <p class="text-silver text-xl p-4 text-center">
+            This is the first and only step to create your artist account. Please include a name and short description for your fans, before you start creating music nfts.
+        </p>
+    </div>
+    <form [formGroup]="signinForm" (ngSubmit)="sendSigninForm(signinForm)" class="md:p-20 p-10 border border-2 border-gum flex flex-col md:w-2/5 mx-auto">
+        <label class="text-silver text-xl">Address:</label>
+        <input class="text-gum font-bold bg-dark rounded my-5" type="text" value="{{address}}" disabled> 
+        <label class="text-silver text-xl">Name:</label>
+        <input class="text-silver font-bold bg-dark rounded border border-sea my-5 py-2" id="name" type="text" formControlName="name">
+        <label class="text-silver text-xl">Description:</label>
+        <textarea class="text-silver font-bold bg-dark rounded border border-sea my-5" id="description" formControlName="description"></textarea>  
+        <button type="submit" class="text-sea hover:text-silver hover:bg-sea font-bold py-4 px-6 border border-sea rounded mx-auto mt-5">Submit</button>     
+    </form>
+    <button (click)="back()" class="text-sea hover:text-silver hover:bg-sea font-bold py-4 px-6 border border-sea rounded mx-auto mt-5">
+        Back
+    </button>
 </div>
