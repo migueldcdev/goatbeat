@@ -23,7 +23,7 @@ export class CreatorPanelComponent implements OnInit {
   constructor(private transaction: TransactionsService) { }
 
   ngOnInit(): void {
-    axios.post('https://gb-app-prod-gb-space-wqvmfi.mo4.mogenius.io/artist', { 'address': this.address }).then(res => {
+    axios.post('API_HERE!', { 'address': this.address }).then(res => {
       this.artistName = res.data.name
       this.artistDescription = res.data.description
     })
@@ -79,8 +79,8 @@ export class CreatorPanelComponent implements OnInit {
       url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
       data: data,
       headers: {
-        'pinata_api_key': "6e7ab34d89ffe646697f",
-        'pinata_secret_api_key': "6d953c9ad111f32e52510434a49fd51befedceefa2b4c0b06c12054b43fd41c4",
+        'pinata_api_key': "API_KEY_HERE!",
+        'pinata_secret_api_key': "API_SECRET_HERE!",
         "Content-Type": "multipart/form-data"
       },
     });
@@ -96,8 +96,8 @@ export class CreatorPanelComponent implements OnInit {
       url: "https://api.pinata.cloud/pinning/pinJSONToIPFS",
       data: metadata,
       headers: {
-        'pinata_api_key': "6e7ab34d89ffe646697f",
-        'pinata_secret_api_key': "6d953c9ad111f32e52510434a49fd51befedceefa2b4c0b06c12054b43fd41c4",
+        'pinata_api_key': "API_KEY_HERE!",
+        'pinata_secret_api_key': "API_SECRET_HERE!",
         "Content-Type": "application/json"
       },
     });

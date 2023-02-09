@@ -39,7 +39,7 @@ export class CreatorsComponent {
     
     this.window.ethereum.request({ method: 'eth_requestAccounts' }).then((accounts:any) => {
       let address = accounts[0];      
-      axios.post('https://gb-app-prod-gb-space-wqvmfi.mo4.mogenius.io/handle', {'address':address}).then(res => {        
+      axios.post('API_ENDPOINT/handle', {'address':address}).then(res => {        
         if (res.data.registered) {
           this.isAddressRegistered = true
           this.address = res.data.address
@@ -67,9 +67,9 @@ export class CreatorsComponent {
     
     }
 
-    axios.post('https://gb-app-prod-gb-space-wqvmfi.mo4.mogenius.io/addartist', val.value).then(res => {
+    axios.post('API_ENDPOINT/addartist', val.value).then(res => {
       
-      axios.post('https://gb-app-prod-gb-space-wqvmfi.mo4.mogenius.io/handle', {'address':this.address}).then(res => {        
+      axios.post('API_ENDPOINT/handle', {'address':this.address}).then(res => {        
         if (res.data.registered) {
           this.isAddressRegistered = true
           this.isAddressProvided = false

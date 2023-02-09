@@ -15,7 +15,7 @@ export class ContractService {
   baseUrl = "https://gateway.pinata.cloud" //ipfs has limited request number so changed to pinata gateway
   
   constructor() { 
-    this.web3 = new Web3('https://goerli.infura.io/v3/6c596dcdad2847e581e3a8f3d46090a9');
+    this.web3 = new Web3('https://goerli.infura.io/v3/API_KEY_HERE!');
     this.contract = new  this.web3.eth.Contract(contractABI, this.address);
   }
 

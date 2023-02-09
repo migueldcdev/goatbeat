@@ -21,7 +21,7 @@ export class ExploreComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    axios.get('https://gb-app-prod-gb-space-wqvmfi.mo4.mogenius.io/artists').then(response => {
+    axios.get('API_ENDPOINT/artists').then(response => {
     this.artists = response.data      
     
     }) 
