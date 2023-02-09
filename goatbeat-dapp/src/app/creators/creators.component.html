@@ -1,0 +1,37 @@
+<div *ngIf="!isAddressRegistered && !isAddressProvided" class="container w-full mx-auto">
+    <div class="container mt-20 md:mt-40 mx-auto">
+        <p class="text-silver text-6xl md:text-8xl p-4 text-center">
+            HERE STARTS YOUR JOURNEY AS A MUSIC <span class="text-gum font-bold">NFT CREATOR</span>
+        </p>
+    </div>
+    <div class="container p-10 mx-auto">        
+        <div class="p-10 flex items-center flex-col">
+            <p class="text-silver text-center my-2">Log in or create a new artist account by connecting your wallet.</p>
+            <button (click)="connectWallet()" class="text-sea hover:text-silver hover:bg-sea font-bold py-4 px-6 border border-sea rounded mx-auto mt-5">
+                Connect with wallet
+            </button>
+        </div>             
+    </div>
+</div>
+
+<app-creator-panel *ngIf="isAddressRegistered" [address]="address"></app-creator-panel>
+
+<div *ngIf="isAddressProvided" class="p-10">
+    <div class="container mt-20 mb-10 mx-auto">
+        <p class="text-silver text-xl p-4 text-center">
+            This is the first and last step to create your artist account. Please include a name and short description for your fans, before you start creating music nfts.
+        </p>
+    </div>
+    <form [formGroup]="signinForm" (ngSubmit)="sendSigninForm(signinForm)" class="md:p-20 p-10 flex flex-col md:w-2/5 mx-auto">
+        <label class="text-silver text-xl">Address:</label>
+        <input class="text-gum font-bold bg-dark rounded my-5" type="text" value="{{address}}" disabled> 
+        <label class="text-silver text-xl">Name:</label>
+        <input class="p-2 rounded bg-dark border border-2 border-silver focus:outline-none focus:border-sea text-silver mt-5" id="name" type="text" formControlName="name">
+        <label class="text-silver text-xl mt-10">Description:</label>
+        <textarea class="p-2 rounded bg-dark border border-2 border-silver focus:outline-none focus:border-sea text-silver mt-5" id="description" formControlName="description"></textarea>  
+        <button type="submit" class="text-sea hover:text-silver hover:bg-sea font-bold py-4 px-6 border border-sea rounded mx-auto mt-5">Submit</button>     
+    </form>
+    <button (click)="back()" class="text-sea hover:text-silver hover:bg-sea font-bold py-4 px-6 border border-sea rounded mx-auto">
+        Back
+    </button>
+</div>

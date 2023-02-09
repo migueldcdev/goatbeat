@@ -1,0 +1,101 @@
+<p class="text-center p-10 text-silver text-6xl font-bold my-10">Playlist</p>
+
+
+  <table class="table-auto mx-auto hidden lg:table">
+    <thead>
+      <tr>
+        <th class="px-4 py-2 text-silver">Title</th>
+        <th class="px-4 py-2 text-silver">Play</th>
+        <th class="px-4 py-2 text-silver">Owner</th>
+        <th class="px-4 py-2 text-silver">Update</th>
+        <th class="px-4 py-2 text-silver">Price</th>
+        <th class="px-4 py-2 text-silver">Buy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of tokenUriList">
+        <td class="px-4 py-2 text-silver">{{item.tokenUri.name}}</td>
+        <td class="px-4 py-2 text-silver">
+          <audio controls>
+            <source src="{{'https://gateway.pinata.cloud' + item.tokenUri.audio}}" type="audio/mpeg">
+          </audio>
+        </td>
+        <td class="px-4 py-2 text-silver break-words">{{item.tokenOwner}}</td>
+        <td class="px-4 py-2 text-silver">
+          <button class="text-sea hover:text-silver hover:bg-sea font-bold py-1 px-2 border border-sea rounded mx-auto"
+            type="button" (click)="showHideForm(item.tokenId)">Price</button>
+        </td>
+        <td class="px-4 py-2 text-silver">{{item.tokenPriceEther}} Eth</td>
+        <td class="px-4 py-2 text-silver">
+          <button class="text-gum hover:text-silver hover:bg-gum font-bold py-1 px-2 border border-gum rounded mx-auto"
+            type="button" (click)="buyNft(item.tokenId, item.tokenPriceWei)">Buy</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table-auto mx-auto hidden md:table lg:hidden">
+    <thead>
+      <tr>
+        <th class="px-4 py-2 text-silver">Title</th>
+        <th class="px-4 py-2 text-silver">Play</th>        
+        <th class="px-4 py-2 text-silver">Update</th>
+        <th class="px-4 py-2 text-silver">Price</th>
+        <th class="px-4 py-2 text-silver">Buy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of tokenUriList">
+        <td class="px-4 py-2 text-silver">{{item.tokenUri.name}}</td>
+        <td class="px-4 py-2 text-silver">
+          <audio controls>
+            <source src="{{'https://gateway.pinata.cloud' + item.tokenUri.audio}}" type="audio/mpeg">
+          </audio>
+        </td>        
+        <td class="px-4 py-2 text-silver">
+          <button class="text-sea hover:text-silver hover:bg-sea font-bold py-1 px-2 border border-sea rounded mx-auto"
+            type="button" (click)="showHideForm(item.tokenId)">Price</button>
+        </td>
+        <td class="px-4 py-2 text-silver">{{item.tokenPriceEther}} Eth</td>
+        <td class="px-4 py-2 text-silver">
+          <button class="text-gum hover:text-silver hover:bg-gum font-bold py-1 px-2 border border-gum rounded mx-auto"
+            type="button" (click)="buyNft(item.tokenId, item.tokenPriceWei)">Buy</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="container mx-auto p-5 m-10 md:hidden">
+    <div class="container mx-auto w-full p-5 m-5 border border-2 border-silver rounded mb-10" *ngFor="let item of tokenUriList">
+      <p class="px-4 py-2 text-silver font-bold text-xl break-words my-5">{{item.tokenUri.name}}</p>
+      <audio controls>
+        <source src="{{'https://gateway.pinata.cloud' + item.tokenUri.audio}}" type="audio/mpeg">
+      </audio>
+      <p class="px-4 py-2 text-silver text-sm font-bold my-5 break-words">{{item.tokenOwner}}</p>
+      <div class="container flex">
+        <button class="text-sea hover:text-silver hover:bg-sea font-bold py-1 px-2 border border-sea rounded mx-auto"
+            type="button" (click)="showHideForm(item.tokenId)">Price
+        </button>
+        <p class="px-4 py-2 text-silver break-words">{{item.tokenPriceEther}} Eth</p>
+        <button class="text-gum hover:text-silver hover:bg-gum font-bold py-1 px-2 border border-gum rounded mx-auto"
+            type="button" (click)="buyNft(item.tokenId, item.tokenPriceWei)">Buy
+        </button>
+      </div>
+      
+    </div>
+  </div>
+
+<div *ngIf="showPriceForm"
+  class="container mx-auto w-5/6 sm:w-3/6 lg:w-2/5 xl:w-1/5 p-5 bg-dark/95 border border-silver border-2 rounded fixed top-20 md:absolute md:top-1/4 md:right-1/3">
+  <p class="text-silver text-right cursor-pointer font-bold" (click)="showHideForm(0)">X</p>
+  <p class="text-silver text-xl text-center font-bold">Update NFT price</p>
+ 
+    <input
+      class="p-2 rounded bg-dark border border-2 border-silver focus:outline-none focus:border-sea text-silver text-center mt-5"
+      type="number" (change)="false" value="0.01" step="0.01" [formControl]="newPrice"/>
+    <button
+      class="text-gum hover:text-silver hover:bg-gum font-bold py-2 px-3 border border-gum rounded mt-5 ml-2" (click)="updatePrice()">Update</button>
+  
+  <p class="text-xs text-silver mt-5 text-center">*only the owner of the NFT may change its price</p>
+</div>
+<div class="container p-48"></div>

@@ -1,0 +1,12 @@
+<div class="container mx-auto text-center mt-10">
+    <p class="text-silver text-8xl text-bold">ARTISTS</p>
+</div>
+<div class="container flex flex-col w-full mx-auto mt-20">
+    <a class="container w-4/5 md:w-2/5 border border-2 rounded border-gum mx-auto my-10 p-10 hover:pointer shadow-lg shadow-sea"  *ngFor="let artist of artists" [routerLink]="['/explore', artist.address]">
+        <div>
+            <p class="text-silver text-3xl font-bold my-3 break-words">{{artist.name}}</p>
+            <p class="text-sea text-sm md:text-base break-words">{{artist.address}}</p>
+            <p class="text-silver text-xl mt-5 font-bold break-words">{{artist.description}}</p>
+        </div>
+    </a>
+</div>
